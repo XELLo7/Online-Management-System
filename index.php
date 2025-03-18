@@ -1,3 +1,21 @@
+<?php
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "Login";
+
+// Create connection
+$conn = new mysqli($host, $user, $pass, $db); // Corrected 'msqli' to 'mysqli' and added semicolon
+
+// Check connection
+if ($conn->connect_error) {
+    die("Failed to connect to DB: " . $conn->connect_error); // Use die() to stop execution on error
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -48,6 +66,7 @@
 
     <div class="container" id="signIn">
         <h1 class="form-title">Sign In</h1>
+
         <form method="post" action="register.php">
         <div class="input-group">
                 <i class="fas fa-envelope"></i>
