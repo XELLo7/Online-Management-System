@@ -18,6 +18,9 @@ $result = $conn->query($sql);
 
 <header class="main-header">
     <h1 class="title">Available Books</h1>
+    <div class="logout-container">
+        <a href="logout.php" class="logout-btn">Logout</a>
+    </div>
 </header>
 
 <nav class="navbar">
@@ -43,21 +46,21 @@ $result = $conn->query($sql);
                 </tr>
             </thead>
             <tbody>
-                <?php
-                if ($result->num_rows > 0) {
-                    while($row = $result->fetch_assoc()) {
-                        echo "<tr>
-                                <td>" . htmlspecialchars($row['id']) . "</td>
-                                <td>" . htmlspecialchars($row['title']) . "</td>
-                                <td>" . htmlspecialchars($row['author']) . "</td>
-                                <td>" . htmlspecialchars($row['status']) . "</td>
-                                <td>" . htmlspecialchars($row['quantity']) . "</td>
-                              </tr>";
-                    }
-                } else {
-                    echo "<tr><td colspan='5'>No books available.</td></tr>";
-                }
-                ?>
+                <?php if ($result->num_rows > 0): ?>
+                    <?php while($row = $result->fetch_assoc()): ?>
+                        <tr>
+                            <td><?php echo htmlspecialchars($row['id']); ?></td>
+                            <td><?php echo htmlspecialchars($row['title']); ?></td>
+                            <td><?php echo htmlspecialchars($row['author']); ?></td>
+                            <td><?php echo htmlspecialchars($row['status']); ?></td>
+                            <td><?php echo htmlspecialchars($row['quantity']); ?></td>
+                        </tr>
+                    <?php endwhile; ?>
+                <?php else: ?>
+                    <tr>
+                        <td colspan="5">No books available.</td>
+                    </tr>
+                <?php endif; ?>
             </tbody>
         </table>
     </main>
