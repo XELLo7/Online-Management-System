@@ -1,3 +1,21 @@
+<?php
+
+$host = "localhost";
+$user = "root";
+$pass = "";
+$db = "Login";
+
+// Create connection
+$conn = new mysqli($host, $user, $pass, $db);
+
+// Check connection
+if ($conn->connect_error) {
+    die("Failed to connect to DB: " . $conn->connect_error);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +24,8 @@
     <title>Register and Log-In</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
+
+    
 </head>
 <body>
     <div class="container" id="signUp" style="display: none;">
